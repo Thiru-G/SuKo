@@ -53,6 +53,8 @@ a{color:#E0A15E}a:hover{color:#F6E3CC}
 .eeg-track{animation:eegScroll 70s linear infinite}
 .hyp-a{animation:drawA 12s ease-in-out infinite}
 .hyp-b{animation:drawB 12s ease-in-out infinite}
+@keyframes alarmIn{0%,33%{opacity:0}37%,92%{opacity:1}100%{opacity:0}}
+.hyp-alarm{animation:alarmIn 12s ease-in-out infinite}
 #sessions article{transition:border-color .2s,transform .2s}
 #sessions article:hover,#sessions article:focus-within{border-color:#E0A15E !important;transform:translateY(-4px)}
 #sessions article button:focus-visible{outline:2px solid #E0A15E;outline-offset:4px}
@@ -137,13 +139,14 @@ a{color:#E0A15E}a:hover{color:#F6E3CC}
 <section aria-labelledby="steer-a" style="max-width: 1200px; margin: 0 auto; padding: 112px 24px 0">
 <p style="margin: 0 0 12px; color: #E0A15E; font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase">Same 45 minutes</p>
 <h2 id="steer-a" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; max-width: 760px">Two very different endings.</h2>
-<p style="margin: 16px 0 40px; max-width: 640px; color: #BBB2C5">Left alone, a short rest slides into deep sleep and you wake up groggy. SuKo sees deep sleep starting, brings you back up, then lifts you gently to wake.</p>
-<svg role="img" aria-label="Two hypnograms over 45 minutes. Left alone, sleep ends in deep sleep. With SuKo, sleep starts sooner, deep sleep is brought back up to light sleep, and the session ends with a gentle rise to wake." viewBox="0 0 980 490" style="display: block; width: 100%; height: auto; font-family: Inter, sans-serif">
+<p style="margin: 16px 0 40px; max-width: 640px; color: #BBB2C5">Left alone, a short rest slides into deep sleep, and the alarm yanks you straight out of it. That is when grogginess is worst. SuKo sees deep sleep starting, brings you back up, then lifts you gently to wake.</p>
+<svg role="img" aria-label="Two hypnograms over 45 minutes. Left alone, sleep sinks into deep sleep and an alarm jolts you from deep sleep straight to wake. With SuKo, sleep starts sooner, deep sleep is brought back up to light sleep, and the session ends with a gentle rise to wake." viewBox="0 0 980 490" style="display: block; width: 100%; height: auto; font-family: Inter, sans-serif">
 <text x="60" y="24" fill="#BBB2C5" font-size="15" font-weight="600">Left alone (real night)</text>
 <rect x="60" y="190" width="900" height="28" fill="#2E2839"></rect>
 <g fill="#BBB2C5" font-size="13" text-anchor="end"><text x="50" y="64">Wake</text><text x="50" y="100">REM</text><text x="50" y="136">N1</text><text x="50" y="172">N2</text><text x="50" y="208">N3</text></g>
 <g stroke="#3A3445" stroke-width="1"><line x1="60" y1="60" x2="960" y2="60"></line><line x1="60" y1="96" x2="960" y2="96"></line><line x1="60" y1="132" x2="960" y2="132"></line><line x1="60" y1="168" x2="960" y2="168"></line><line x1="60" y1="204" x2="960" y2="204"></line></g>
-<path class="hyp-a" d="M60 60 H170 V132 H240 V168 H360 V60 H470 V132 H510 V168 H690 V204 H960" fill="none" stroke="#8A8296" stroke-width="3" stroke-linejoin="round" pathLength="1" stroke-dasharray="1"></path>
+<path class="hyp-a" d="M60 60 H170 V132 H240 V168 H360 V60 H470 V132 H510 V168 H690 V204 H930" fill="none" stroke="#8A8296" stroke-width="3" stroke-linejoin="round" pathLength="1" stroke-dasharray="1"></path>
+<g class="hyp-alarm"><path d="M930 204 V60 H960" fill="none" stroke="#F07A6A" stroke-width="3" stroke-linejoin="round"></path><circle cx="930" cy="204" r="5" fill="#F07A6A"></circle><text x="918" y="92" fill="#F07A6A" font-size="14" font-weight="600" text-anchor="end">Alarm: jolted out of deep sleep</text><text x="918" y="112" fill="#BBB2C5" font-size="13" text-anchor="end">Groggy for up to an hour (sleep inertia)</text></g>
 <text x="60" y="264" fill="#E0A15E" font-size="15" font-weight="600">With SuKo (design target)</text>
 <rect x="60" y="430" width="900" height="28" fill="#2E2839"></rect>
 <g fill="#BBB2C5" font-size="13" text-anchor="end"><text x="50" y="304">Wake</text><text x="50" y="340">REM</text><text x="50" y="376">N1</text><text x="50" y="412">N2</text><text x="50" y="448">N3</text></g>
@@ -151,7 +154,7 @@ a{color:#E0A15E}a:hover{color:#F6E3CC}
 <path class="hyp-b" d="M60 300 H120 V372 H160 V408 H640 V444 H680 V408 H860 V372 H920 V300 H960" fill="none" stroke="#E0A15E" stroke-width="4" stroke-linejoin="round" pathLength="1" stroke-dasharray="1"></path>
 <g fill="#BBB2C5" font-size="13" text-anchor="middle"><text x="60" y="482">0</text><text x="360" y="482">15</text><text x="660" y="482">30</text><text x="945" y="482">45 min</text></g>
 </svg>
-<p style="margin: 16px 0 0; font-size: 13px; color: #BBB2C5">Top: the first 45 minutes of a real night, scored by an expert in 30-second epochs (YASA sample recording; Vallat &amp; Walker, eLife 2021, <a href="https://doi.org/10.7554/eLife.70092">doi:10.7554/eLife.70092</a>; data on <a href="https://doi.org/10.5281/zenodo.14564284">Zenodo</a>). Bottom: the profile SuKo aims for, not a measured result.</p>
+<p style="margin: 16px 0 0; font-size: 13px; color: #BBB2C5">Top: the first 45 minutes of a real night, scored by an expert in 30-second epochs (YASA sample recording; Vallat &amp; Walker, eLife 2021, <a href="https://doi.org/10.7554/eLife.70092">doi:10.7554/eLife.70092</a>; data on <a href="https://doi.org/10.5281/zenodo.14564284">Zenodo</a>). The alarm at 44 minutes is added to show waking at that point. Waking from deep sleep causes the strongest sleep inertia (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6710480">Hilditch &amp; McHill, Nat Sci Sleep 2019</a>). Bottom: the profile SuKo aims for, not a measured result.</p>
 </section>
 
 <section id="how" style="max-width: 1200px; margin: 0 auto; padding: 112px 24px">
