@@ -19,6 +19,24 @@
 html{scroll-behavior:smooth}
 [hidden]{display:none !important}
 
+.site-header{position:sticky;top:0;z-index:40;background:rgba(23,19,31,0.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(58,52,69,0.6)}
+.site-header .bar{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.site-header .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;letter-spacing:0.12em;color:#F2EDE4;text-decoration:none}
+.nav-links{display:flex;gap:28px;font-size:15px;margin-left:auto}
+.nav-links a{color:#BBB2C5;text-decoration:none}.nav-links a:hover{color:#F2EDE4}
+.actions{display:flex;align-items:center;gap:8px}
+.cta{background:#E0A15E;color:#17131F !important;text-decoration:none;padding:0 18px;border-radius:999px;font-weight:600;font-size:15px;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid #3A3445;border-radius:50%;background:transparent;color:#F2EDE4;cursor:pointer;align-items:center;justify-content:center;padding:0}
+.menu-btn .i-close{display:none}.menu-btn[aria-expanded=true] .i-open{display:none}.menu-btn[aria-expanded=true] .i-close{display:inline}
+.mobile-menu{display:flex;flex-direction:column;padding:4px 24px 16px}
+.mobile-menu a{color:#F2EDE4;text-decoration:none;font-size:18px;padding:14px 0;border-top:1px solid #3A3445}
+[id]{scroll-margin-top:84px}
+.card-arrow{position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;border:1px solid #3A3445;color:#E0A15E;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s,border-color .2s,transform .2s;pointer-events:none}
+#sessions article:hover .card-arrow,#sessions article:focus-within .card-arrow{background:#E0A15E;border-color:#E0A15E;color:#17131F;transform:rotate(45deg)}
+#sessions article > p:first-of-type{padding-right:56px}
+
+@media (max-width:760px){.nav-links{display:none}.menu-btn{display:inline-flex}.site-header .bar{padding:12px 20px}}
+
 body{margin:0;background:#17131F}
 a{color:#E0A15E}a:hover{color:#F6E3CC}
 @keyframes eegScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -42,13 +60,25 @@ a{color:#E0A15E}a:hover{color:#F6E3CC}
 <body>
 <div style="background: #17131F; color: #F2EDE4; font-family: Inter, system-ui, sans-serif; font-size: 17px; line-height: 1.6">
 
-<header style="max-width: 1200px; margin: 0 auto; padding: 24px 24px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
-<a href="#top" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 0.12em; color: #F2EDE4; text-decoration: none">SUKO</a>
-<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: center; font-size: 15px">
-<a href="#how" style="color: #BBB2C5; text-decoration: none">How it works</a>
-<a href="#sessions" style="color: #BBB2C5; text-decoration: none">Sessions</a>
-<a href="#science" style="color: #BBB2C5; text-decoration: none">Science</a>
-<a href="#pilot" style="background: #E0A15E; color: #17131F; text-decoration: none; padding: 10px 18px; border-radius: 999px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Get updates</a>
+<header class="site-header">
+<div class="bar">
+<a href="#top" class="logo">SUKO</a>
+<nav aria-label="Main" class="nav-links">
+<a href="#how">How it works</a>
+<a href="#sessions">Sessions</a>
+<a href="#science">Science</a>
+<a href="#founder">Founder</a>
+</nav>
+<div class="actions">
+<a href="#pilot" class="cta">Get updates</a>
+<button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="i-open" d="M4 7h16M4 12h16M4 17h16"></path><path class="i-close" d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+</div>
+<nav id="mobile-menu" aria-label="Mobile" class="mobile-menu" hidden>
+<a href="#how">How it works</a>
+<a href="#sessions">Sessions</a>
+<a href="#science">Science</a>
+<a href="#founder">Talk with the founder</a>
 </nav>
 </header>
 
@@ -148,6 +178,7 @@ a{color:#E0A15E}a:hover{color:#F6E3CC}
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; max-width: 760px">One pod, one engine, three ways to use sleep.</h2>
 <div style="margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
 <article style="position: relative; background: #17131F; border: 1px solid #3A3445; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<span class="card-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
 <p style="margin: 0; color: #E0A15E; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase">Light sleep · N1 + N2</p>
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 34px">Adaptive Rest</h3>
 <p style="margin: 0; font-size: 20px">Wake up sharp, whatever time you have.</p>
@@ -156,6 +187,7 @@ a{color:#E0A15E}a:hover{color:#F6E3CC}
 <button type="button" aria-label="Adaptive Rest: how a session goes" data-session="rest" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; border-radius: 24px; background: transparent; cursor: pointer"></button>
 </article>
 <article style="position: relative; background: #17131F; border: 1px solid #3A3445; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<span class="card-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
 <p style="margin: 0; color: #A3C6D4; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase">Sleep onset · N1</p>
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 34px">Drift</h3>
 <p style="margin: 0; font-size: 20px">New ideas and an emotional reset.</p>
@@ -164,6 +196,7 @@ a{color:#E0A15E}a:hover{color:#F6E3CC}
 <button type="button" aria-label="Drift: how a session goes" data-session="drift" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; border-radius: 24px; background: transparent; cursor: pointer"></button>
 </article>
 <article style="position: relative; background: #17131F; border: 1px solid #3A3445; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+<span class="card-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
 <p style="margin: 0; color: #BBB2C5; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase">Dreaming · REM</p>
 <h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 34px">Lucid</h3>
 <p style="margin: 0; font-size: 20px">Explore and steer your dreams.</p>
@@ -211,6 +244,24 @@ a{color:#E0A15E}a:hover{color:#F6E3CC}
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15">Sleep data with the story attached.</h2>
 </div>
 <p style="margin: 0; color: #BBB2C5">Every session can add one consented record: your context before, the EEG and every cue during, and how you felt after, annotated live by the staff in the room. Opt-in, pseudonymised and GDPR-compliant.</p>
+</div>
+</section>
+
+<section id="founder" style="background: #241F2E; padding: 112px 24px">
+<div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items: center">
+<div>
+<p style="margin: 0 0 12px; color: #E0A15E; font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase">Talk with the founder</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(32px, 4vw, 48px); line-height: 1.1">Curious about SuKo? Let's talk.</h2>
+<p style="margin: 20px 0 0; color: #BBB2C5; max-width: 520px">Sleep scientist, psychotherapist, venue, investor, or just interested in better rest: I'd love to hear from you.</p>
+</div>
+<div style="background: #17131F; border: 1px solid #3A3445; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; align-items: center; gap: 16px">
+<span aria-hidden="true" style="flex: none; width: 64px; height: 64px; border-radius: 50%; background: #E0A15E; color: #17131F; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px">TS</span>
+<div><p style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 22px">Thirumalai Srinivasan</p><p style="margin: 2px 0 0; color: #BBB2C5; font-size: 15px">Founder · M.Sc. student, Technical University of Munich</p></div>
+</div>
+<p style="margin: 0; color: #BBB2C5; font-size: 15px">Biosignal hardware engineer: EEG acquisition, firmware and PCB design.</p>
+<a href="mailto:thirumalaisrinivasang@gmail.com?subject=SuKo" style="align-self: flex-start; background: #E0A15E; color: #17131F; text-decoration: none; padding: 0 24px; min-height: 48px; display: inline-flex; align-items: center; border-radius: 999px; font-weight: 600">Email the founder</a>
+</div>
 </div>
 </section>
 
@@ -309,6 +360,12 @@ document.querySelectorAll('[data-session]').forEach(function(b){ b.addEventListe
 modal.querySelectorAll('.js-close').forEach(function(b){ b.addEventListener('click', close); });
 modal.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
 
+
+var mb=document.querySelector('.menu-btn'), mm=document.getElementById('mobile-menu');
+function setMenu(o){mb.setAttribute('aria-expanded',o?'true':'false');mb.setAttribute('aria-label',o?'Close menu':'Open menu');mm.hidden=!o;}
+mb.addEventListener('click',function(){setMenu(mm.hidden);});
+mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+window.addEventListener('resize',function(){if(innerWidth>760)setMenu(false);});
 var form = document.getElementById('updates-form'), msg = document.getElementById('form-msg');
 form.addEventListener('submit', function(e){
   e.preventDefault();
