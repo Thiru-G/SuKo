@@ -3,7 +3,6 @@
 Static one-page site for SuKo, an EEG-guided sleep pod (in development, Munich).
 
 - `index.html`: the landing page (no build step)
-- `impressum.html`, `datenschutz.html`: legal page templates, fill in before going live
 - `assets/`: EEG images and self-hosted fonts (Inter, Space Grotesk; SIL Open Font License)
 
 EEG traces and hypnogram: YASA sample recording, Vallat & Walker (2021), eLife 10:e70092, https://doi.org/10.7554/eLife.70092
