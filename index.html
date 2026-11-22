@@ -31,6 +31,9 @@ html{scroll-behavior:smooth}
 .mobile-menu{display:flex;flex-direction:column;padding:4px 24px 16px}
 .mobile-menu a{color:#F2EDE4;text-decoration:none;font-size:18px;padding:14px 0;border-top:1px solid #3A3445}
 [id]{scroll-margin-top:84px}
+.toast{font-family:Inter,system-ui,sans-serif;position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#F2EDE4;color:#17131F;padding:12px 20px;border-radius:999px;font-weight:600;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:60;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
 .card-arrow{position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;border:1px solid #3A3445;color:#E0A15E;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s,border-color .2s,transform .2s;pointer-events:none}
 #sessions article:hover .card-arrow,#sessions article:focus-within .card-arrow{background:#E0A15E;border-color:#E0A15E;color:#17131F;transform:rotate(45deg)}
 #sessions article > p:first-of-type{padding-right:56px}
@@ -262,9 +265,10 @@ a{color:#E0A15E}a:hover{color:#F6E3CC}
 <p style="margin: 0; color: #BBB2C5; font-size: 15px">Biosignal hardware engineer: EEG acquisition, firmware and PCB design.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
 <a href="https://calendar.app.google/qQfHDaXrmRF626bS8" target="_blank" rel="noopener" style="background: #E0A15E; color: #17131F; text-decoration: none; padding: 0 20px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; font-weight: 600; font-size: 15px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg>Book a call</a>
-<a href="mailto:thirumalaisrinivasang@gmail.com?subject=SuKo" style="border: 1px solid #625B6C; color: #F2EDE4; text-decoration: none; padding: 0 20px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; font-weight: 600; font-size: 15px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>Email</a>
+<a href="mailto:thirumalaisrinivasang@gmail.com?subject=SuKo" class="js-email" data-email="thirumalaisrinivasang@gmail.com" style="border: 1px solid #625B6C; color: #F2EDE4; text-decoration: none; padding: 0 20px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; font-weight: 600; font-size: 15px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span class="js-email-label">Email</span></a>
 <a href="tel:+4915510475711" style="border: 1px solid #625B6C; color: #F2EDE4; text-decoration: none; padding: 0 20px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; font-weight: 600; font-size: 15px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>+49 155 10475711</a>
 </div>
+<p style="margin: 0; font-size: 14px; color: #BBB2C5">thirumalaisrinivasang@gmail.com</p>
 </div>
 </div>
 </section>
@@ -273,16 +277,20 @@ a{color:#E0A15E}a:hover{color:#F6E3CC}
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items: center">
 <div>
 <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(36px, 5vw, 60px); line-height: 1.05">Be the first to hear when SuKo opens.</h2>
-<p style="margin: 20px 0 0; color: #BBB2C5; max-width: 480px">SuKo is in development in Munich. Leave your email for news, or tell us if you want to build it with us.</p>
+<p style="margin: 20px 0 0; color: #BBB2C5; max-width: 480px">SuKo is in development in Munich. Leave your details for news, or help us decide what to build first.</p>
 </div>
-<form id="updates-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: flex; flex-direction: column; gap: 12px; background: #241F2E; padding: 32px; border-radius: 24px">
-<label for="a-email" style="font-size: 15px; font-weight: 500">Email</label>
-<input id="a-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" style="min-height: 48px; padding: 0 16px; border-radius: 12px; border: 1px solid #625B6C; background: #17131F; color: #F2EDE4; font: inherit">
-<label for="a-role" style="font-size: 15px; font-weight: 500">I am interested as</label>
-<select id="a-role" name="interest" style="min-height: 48px; padding: 0 12px; border-radius: 12px; border: 1px solid #625B6C; background: #17131F; color: #F2EDE4; font: inherit"><option>Someone who wants to try SuKo</option><option>A scientist or clinician</option><option>A venue or employer</option><option>An investor</option></select>
-<button type="submit" style="margin-top: 8px; min-height: 52px; border: 0; border-radius: 999px; background: #E0A15E; color: #17131F; font: inherit; font-weight: 600; cursor: pointer">Get updates</button>
-<p id="form-msg" role="status" style="margin: 0; font-size: 14px; color: #BBB2C5"></p>
-</form>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="background: #241F2E; border: 1px solid #3A3445; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 22px">Stay in touch</p>
+<p style="margin: 0; color: #BBB2C5; font-size: 15px">Get updates, cheer us on, or tell us how you'd like to be involved. Takes 30 seconds.</p>
+<a href="https://tally.so/r/2jKv0b" target="_blank" rel="noopener" style="align-self: flex-start; margin-top: 8px; text-decoration: none; padding: 0 22px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; font-weight: 600; font-size: 15px; background: #E0A15E; color: #17131F">Get updates <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></a>
+</div>
+<div style="background: #241F2E; border: 1px solid #3A3445; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 22px">Help shape SuKo</p>
+<p style="margin: 0; color: #BBB2C5; font-size: 15px">8 quick questions about how you rest. About 2 minutes, anonymous.</p>
+<a href="https://tally.so/r/RWDYpv" target="_blank" rel="noopener" style="align-self: flex-start; margin-top: 8px; text-decoration: none; padding: 0 22px; min-height: 48px; display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; font-weight: 600; font-size: 15px; border: 1px solid #625B6C; color: #F2EDE4">Take the survey <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></a>
+</div>
+</div>
 </div>
 </section>
 
@@ -292,6 +300,7 @@ a{color:#E0A15E}a:hover{color:#F6E3CC}
 </footer>
 
 </div>
+<div id="toast" role="status" aria-live="polite" class="toast"></div>
 <script>
 (function(){
 var data = {
@@ -370,13 +379,19 @@ function setMenu(o){mb.setAttribute('aria-expanded',o?'true':'false');mb.setAttr
 mb.addEventListener('click',function(){setMenu(mm.hidden);});
 mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
 window.addEventListener('resize',function(){if(innerWidth>760)setMenu(false);});
-var form = document.getElementById('updates-form'), msg = document.getElementById('form-msg');
-form.addEventListener('submit', function(e){
-  e.preventDefault();
-  if (form.action.indexOf('YOUR_FORM_ID') !== -1) { msg.textContent = 'Sign-up opens soon. Thanks for your interest!'; return; }
-  fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
-    .then(function(r){ msg.textContent = r.ok ? 'Thanks! We will keep you posted.' : 'Something went wrong. Please try again.'; if (r.ok) form.reset(); })
-    .catch(function(){ msg.textContent = 'Something went wrong. Please try again.'; });
+
+document.querySelectorAll('.js-email').forEach(function(a){
+  var label=a.querySelector('.js-email-label'), toast=document.getElementById('toast'), t;
+  a.addEventListener('click', function(e){
+    if (!window.matchMedia('(pointer: fine)').matches || !navigator.clipboard) return;
+    e.preventDefault();
+    navigator.clipboard.writeText(a.getAttribute('data-email')).then(function(){
+      label.textContent='Copied';
+      toast.textContent='Email copied: '+a.getAttribute('data-email');
+      toast.classList.add('show');
+      clearTimeout(t); t=setTimeout(function(){ label.textContent='Email'; toast.classList.remove('show'); },2800);
+    }).catch(function(){ window.location.href=a.href; });
+  });
 });
 })();
 </script>

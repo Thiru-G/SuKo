@@ -11,6 +11,7 @@ EEG traces and hypnogram: YASA sample recording, Vallat & Walker (2021), eLife 1
 
 Cloudflare Pages, connected to this repository. Framework preset: None. Build command: empty. Output directory: `/`.
 
-## Sign-up form
+## Forms
 
-Replace `YOUR_FORM_ID` in `index.html` with a Formspree form ID to start collecting emails.
+- Stay in touch: https://tally.so/r/2jKv0b
+- Survey: https://tally.so/r/RWDYpv
